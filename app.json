@@ -6,7 +6,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -24,7 +24,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.solar.reportsgruposolar",
-      "buildNumber": "1.0.1"
+      "buildNumber": "1.0.2"
     },
     "android": {
       "package": "com.solar.reportsgruposolar",
@@ -35,7 +35,6 @@
       }
     },
     "androidStatusBar": {
-      "backgroundColor": "#fff",
       "translucent": true
     },
     "extra": {
