@@ -1,8 +1,14 @@
 {
   "expo": {
+<<<<<<< HEAD
     "name": "App Relatórios Grupo Solar",
     "slug": "apprelatoriosgruposolar",
     "platforms":[
+=======
+    "name": "Relatórios Grupo Solar",
+    "slug": "reportsgruposolar",
+    "platforms": [
+>>>>>>> 64aa97495e0c2e65a37d97b78a08a04fe1489fb3
       "ios",
       "android"
     ],
@@ -23,8 +29,13 @@
     ],
     "ios": {
       "supportsTablet": false,
+<<<<<<< HEAD
       "bundleIdentifier": "com.solar.relatoriosgruposolar",
       "buildNumber": "1.0.0"
+=======
+      "bundleIdentifier": "com.solar.reportsgruposolar",
+      "buildNumber": "1.0.1"
+>>>>>>> 64aa97495e0c2e65a37d97b78a08a04fe1489fb3
     },
     "android": {
       "package": "com.solar.relatoriosgruposolar",
@@ -37,6 +48,11 @@
     "androidStatusBar": {
       "backgroundColor": "#fff",
       "translucent": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b71da469-b26f-4345-8f4e-fb836d9eddd9"
+      }
     }
   }
 }
