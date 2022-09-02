@@ -41,17 +41,7 @@ export default function Lojas() {
 
   return (
     <Fragment>
-      <View style={{
-        ...Platform.select({
-          ios: {
-            height: 50,
-            backgroundColor: '#0A3B7E'
-          },
-          android: {
-            height: 0,
-          }
-        })
-      }} />
+      <View style={{flex: 1, backgroundColor: '#0A3B7E'}}>
       <BoxHome>
 
         <HeaderHome
@@ -191,6 +181,7 @@ export default function Lojas() {
           </ButtonArea>
         </ScreenArea>
       </BoxHome>
+      </View>
     </Fragment>
 
   );

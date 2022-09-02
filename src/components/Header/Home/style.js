@@ -11,8 +11,6 @@ export const TopBarHome = ({ children, startColor, endColor, alignItems, justify
                 flex: 1, 
                 alignItems: alignItems, 
                 justifyContent: justifyContent,
-                borderBottomLeftRadius: 15,
-                borderBottomRightRadius: 15,
                 elevation: 4,
                 ...Platform.select({
                     ios: {

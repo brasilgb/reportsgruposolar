@@ -6,6 +6,7 @@ flex: 1;
 
 export const ScreenArea = styled.View`
 flex: 4;
+background-color: #FFF;
 `;
 
 export const GraphArea = styled.View`

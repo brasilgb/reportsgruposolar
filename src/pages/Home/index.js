@@ -20,7 +20,7 @@ export default function Home() {
         >
             <HeaderPortal
                 startColor="#009DE0" // Meio
-                endColor="#00a8ea"
+                endColor="#009DE0"
                 textColor="#FFF"
                 title="Grupo Solar"
                 subTitle="Relatórios Administrativos"

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-
 export const BoxHome = ({ children, startColor, endColor, alignItems, justifyContent }) => {
     return (
         <LinearGradient
@@ -14,6 +13,7 @@ export const BoxHome = ({ children, startColor, endColor, alignItems, justifyCon
         </LinearGradient>
     );
 };
+
 
 export const ContainerPortal = styled.View`
 flex: 4;
