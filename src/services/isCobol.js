@@ -15,8 +15,8 @@ isCobol.interceptors.request.use(async (request) => {
   // BASE_URL = `http://172.16.1.34:8081/servicecomercial/servlet/isCobol`;
 
   // Produção
-  request.baseURL = `http://172.16.1.46:8080/servicesgruposolar/servlet/isCobol`;
-  BASE_URL = `http://172.16.1.46:8080/servicesgruposolar/servlet/isCobol`;
+  request.baseURL = `http://comercial.gruposolar.com.br:8081/servicesgruposolar/servlet/isCobol`;
+  BASE_URL = `http://comercial.gruposolar.com.br:8081/servicesgruposolar/servlet/isCobol`;
 
   requestCustom = request;
   data = request.data;

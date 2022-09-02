@@ -45,6 +45,7 @@ export default function Calendar({ color }) {
           onCancel={hideDatePicker}
           onChange={onChange}
           locale="pt-br"
+          
         />
       </View>
     </Fragment>
