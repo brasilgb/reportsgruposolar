@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Relatórios Grupo Solar",
-    "slug": "reportsgruposolar",
+    "name": "App Relatórios Grupo Solar",
+    "slug": "apprelatoriosgruposolar",
     "platforms":[
       "ios",
       "android"
@@ -23,11 +23,11 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.solar.reportsgruposolar",
+      "bundleIdentifier": "com.solar.relatoriosgruposolar",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.solar.reportsgruposolar",
+      "package": "com.solar.relatoriosgruposolar",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

@@ -24,7 +24,7 @@ export default function Home() {
                 textColor="#FFF"
                 title="Grupo Solar"
                 subTitle="Relatórios Administrativos"
-                bgStatus="#00a8ea"
+                bgStatus="#009DE0"
                 barStyle="light"
             />
             <ContainerPortal>
