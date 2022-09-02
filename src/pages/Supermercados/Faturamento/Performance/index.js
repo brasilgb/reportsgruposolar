@@ -143,7 +143,7 @@ export default function Performance() {
                       {((fatdia.PerfDiaPerf) * 100).toFixed(2)}%
                     </Text>
                   </DataTable.Cell>
-                  <DataTable.Cell style={[styles.colmedia, { backgroundColor: 'red' }]}>{<MoneyPTBR number={((fatdia.MediaDia) * 1)} />}</DataTable.Cell>
+                  <DataTable.Cell>{<MoneyPTBR number={((fatdia.MediaDia) * 1)} />}</DataTable.Cell>
                 </DataTable.Row>
               ))}
             </DataTable>
@@ -155,7 +155,7 @@ export default function Performance() {
                 // width={350}
                 horizontal
                 responsive={false}
-                domainPadding={{ x: [20, 20], y: 60 }}
+                domainPadding={{ x: [10, 10], y: 60 }}
                 theme={VictoryTheme.material}
               >
                 <VictoryLegend
@@ -192,7 +192,7 @@ export default function Performance() {
                 <VictoryBar
                   data={datavendas}
                   labels={({ datum }) => `R$ ${datum.y}`}
-                  barWidth={16}
+                  barWidth={10}
                   barRatio={1}
                   cornerRadius={6}
                   alignment="middle"

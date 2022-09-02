@@ -38,10 +38,12 @@ export default function SCompras() {
         startColor="#FF710F"
         endColor="#f26000"
         textColor="#FFF"
-        bgStatus="#f26000"
         title="Supermercados"
         subTitle="Compras"
         dtatu={moment(sComTotais[0]?.Atualizacao).format('DD/MM/YYYY HH:mm:ss')}
+        bgStatus="#f26000"
+        
+        barStyle="light"
       />
 
       <TabContainer>

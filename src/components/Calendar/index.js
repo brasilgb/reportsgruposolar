@@ -1,14 +1,15 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import { Platform, View } from 'react-native';
+import { Button, Platform, View } from 'react-native';
 import Icon from '@expo/vector-icons/Ionicons';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { AuthContext } from '../../contexts/auth';
 
 export default function Calendar({ color }) {
 
-  const { setDataFiltro, dataFiltro} = useContext(AuthContext);
+  const { setDataFiltro } = useContext(AuthContext);
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -17,25 +18,34 @@ export default function Calendar({ color }) {
     setDataFiltro(currentDate)
   };
 
-  const showDatepicker = () => {
-    setShow(true);
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    setDate(date);
+    setDataFiltro(date)
+    hideDatePicker();
   };
 
   return (
     <Fragment>
       <View>
-        <Icon onPress={showDatepicker}  name="calendar" size={25} color={color ? color : '#333'} />
-        {show && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={date}
-            mode={'date'}
-            is24Hour={true}
-            display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-            onChange={onChange}
-            locale="pt-br"
-          />
-        )}
+        {/* <Button title="Show Date Picker" onPress={showDatePicker} /> */}
+        <Icon onPress={showDatePicker}  name="calendar" size={25} color={color ? color : '#333'} />
+        <DateTimePickerModal
+          isVisible={isDatePickerVisible}
+          value={date}
+          mode="date"
+          onConfirm={handleConfirm}
+          onCancel={hideDatePicker}
+          onChange={onChange}
+          locale="pt-br"
+        />
       </View>
     </Fragment>
   );

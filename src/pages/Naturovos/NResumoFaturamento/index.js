@@ -34,10 +34,11 @@ export default function NResumoFaturamento() {
                 startColor="#fcbc32"
                 endColor="#F5AB00"
                 textColor="#333"
-                bgStatus="#F5AB00"
                 title="Naturovos"
                 subTitle="ADM Resumo"
                 dtatu={moment(nResTotal[0]?.Atualizacao).format('DD/MM/YYYY HH:mm:ss')}
+                bgStatus="#F5AB00"
+                barStyle='light-content'
             />
             <TabContainer>
                 <ResumoTab.Navigator

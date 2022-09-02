@@ -8,6 +8,7 @@ import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import moment from 'moment';
 import isCobol from '../services/isCobol';
+import api from '../services/api';
 
 export const AuthContext = createContext();
 
@@ -117,7 +118,7 @@ export default function AuthProvider({ children }) {
     }, []);
 
     const validateAccessLevel = useCallback(async (userCode, programCode, module) => {
-      
+
         const response = await isCobol.post('(LOG_USU_VALIDATE_ACCESS)', {
             userCode,
             programCode,
@@ -125,7 +126,7 @@ export default function AuthProvider({ children }) {
         });
 
         if (response.status !== 200) {
-    
+
             throw new Error(
                 'Erro ao conectar-se ao servidor. O serviço da aplicação parece estar parado.',
             );
@@ -137,7 +138,7 @@ export default function AuthProvider({ children }) {
 
             // throw new Error(`${message}\n\nDetalhes:\n${detailMessage}`);
         }
-  
+
         return success;
     },
         [],

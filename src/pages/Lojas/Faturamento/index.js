@@ -35,11 +35,12 @@ export default function LFaturamento() {
             <HeaderPage
                 startColor="#014D9B"
                 endColor="#0A3B7E"
-                bgStatus="#0A3B7E"
                 textColor="#FFF"
                 title="Lojas Solar"
                 subTitle="Faturamento"
                 dtatu={moment(totais[0]?.Atualizacao).format('DD/MM/YYYY HH:mm:ss')}
+                bgStatus="#0A3B7E"
+                barStyle='light'
             />
             <TabContainer>
                 <ResumoTab.Navigator

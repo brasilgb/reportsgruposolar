@@ -36,10 +36,11 @@ export default function SFaturamento() {
                 startColor="#FF710F"
                 endColor="#f26000"
                 textColor="#FFF"
-                bgStatus="#f26000"
                 title="Supermercados"
                 subTitle="Faturamento"
                 dtatu={moment(sFatTotais[0]?.Atualizacao).format('DD/MM/YYYY HH:mm:ss')}
+                bgStatus="#f26000"
+                barStyle="light"
             />
             <TabContainer>
                 <ResumoTab.Navigator

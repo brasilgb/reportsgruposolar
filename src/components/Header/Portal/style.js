@@ -1,15 +1,24 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Platform } from 'react-native';
 
 export const TopBarHome = ({ children, startColor, endColor, alignItems, justifyContent }) => {
     return (
         <LinearGradient
             colors={[startColor, endColor]}
-            style={{ 
-                flex: 1, 
-                alignItems: alignItems, 
-                justifyContent: justifyContent
+            style={{
+                flex: 1,
+                alignItems: alignItems,
+                justifyContent: justifyContent,
+                ...Platform.select({
+                    ios: {
+                        paddingTop: 50
+                    },
+                    android: {
+                        paddingTop: 20
+                    }
+                })
             }}
             start={{ x: 0.1, y: 0.8 }}
             end={{ x: 0.1, y: 0.1 }}
@@ -50,6 +59,7 @@ align-items: flex-end;
 InfoLogged.Middle = styled.View`
 flex:10;
 align-items: flex-start;
+padding-top: 4px;
 `;
 
 InfoLogged.Title = styled.Text`

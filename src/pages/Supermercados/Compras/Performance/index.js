@@ -60,7 +60,7 @@ export default function CPerformance() {
                 // width={350}
                 horizontal
                 responsive={false}
-                domainPadding={{ x: [20, 20], y: 60 }}
+                domainPadding={{ x: [10, 10], y: 60 }}
                 theme={VictoryTheme.material}
               >
                 <VictoryLegend
@@ -95,7 +95,7 @@ export default function CPerformance() {
                 <VictoryBar
                   data={datacompras}
                   labels={({ datum }) => `R$ ${datum.y}`}
-                  barWidth={16}
+                  barWidth={10}
                   barRatio={1}
                   cornerRadius={6}
                   alignment="middle"

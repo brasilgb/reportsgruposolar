@@ -97,7 +97,7 @@ export default function SPerformanceDia() {
                   // width={350}
                   horizontal
                   minDomain={0} 
-                  domainPadding={{ x: 20 }}
+                  domainPadding={{ x: [10, 10], y: 60 }}
                   theme={VictoryTheme.material}
                 >
                   <VictoryLegend
@@ -133,7 +133,7 @@ export default function SPerformanceDia() {
                   <VictoryBar
                     data={datavendas}
                     labels={({ datum }) => `R$ ${datum.y}`}
-                    barWidth={16}
+                    barWidth={10}
                     barRatio={0.9}
                     cornerRadius={6}
                     alignment="middle"

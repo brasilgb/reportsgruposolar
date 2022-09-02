@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Platform } from 'react-native';
 
 export const TopBarHome = ({ children, startColor, endColor, alignItems, justifyContent }) => {
     return (
@@ -10,7 +11,15 @@ export const TopBarHome = ({ children, startColor, endColor, alignItems, justify
                 flex: 1, 
                 alignItems: alignItems, 
                 justifyContent: justifyContent,
-                elevation: 4
+                elevation: 4,
+                ...Platform.select({
+                    ios: {
+                        paddingTop: 10
+                    },
+                    android: {
+                        paddingTop: 20
+                    }
+                })
             }}
             start={{ x: 0.1, y: 0.8 }}
             end={{ x: 0.1, y: 0.1 }}
@@ -51,6 +60,7 @@ align-items: flex-end;
 InfoLogged.Middle = styled.View`
 flex:10;
 align-items: flex-start;
+padding-top: 4px;
 `;
 
 InfoLogged.Title = styled.Text`

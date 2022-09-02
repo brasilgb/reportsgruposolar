@@ -39,6 +39,8 @@ export default function LResumo() {
                 title="Lojas Solar"
                 subTitle="Resumo de Faturamento"
                 dtatu={moment(totais[0]?.Atualizacao).format('DD/MM/YYYY HH:mm:ss')}
+                bgStatus="#0A3B7E"
+                barStyle='light'
             />
 
             <TabContainer>

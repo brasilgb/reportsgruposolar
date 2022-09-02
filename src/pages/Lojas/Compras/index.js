@@ -40,6 +40,8 @@ export default function LCompras() {
         title="Lojas Solar"
         subTitle="Compras"
         dtatu={moment(comTotais[0]?.Atualizacao).format('DD/MM/YYYY HH:mm:ss')}
+        bgStatus="#0A3B7E"
+        barStyle='light'
       />
 
       <TabContainer>

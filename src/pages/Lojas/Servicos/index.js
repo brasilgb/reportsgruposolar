@@ -39,6 +39,8 @@ export default function LServicos() {
                 title="Lojas Solar"
                 subTitle="Serviços"
                 dtatu={moment(serTotais[0]?.Atualizacao).format('DD/MM/YYYY HH:mm:ss')}
+                bgStatus="#0A3B7E"
+                barStyle='light'
             />
             <TabContainer>
                 <ServicoTab.Navigator

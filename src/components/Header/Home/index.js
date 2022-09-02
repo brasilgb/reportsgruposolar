@@ -1,14 +1,14 @@
 import { StackActions, useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import Icon from '@expo/vector-icons/Ionicons';
 import { AuthContext } from '../../../contexts/auth';
 import Calendar from '../../Calendar';
 import { BoxAtualiza, BoxTextAtualiza, InfoHeader, InfoLogged, TitleAtualiza, TopBarHome } from './style';
 
-export default function HeaderHome({ dtatu, startColor, endColor, bgStatus, title, subTitle, textColor, barStyle }) {
+export default function HeaderHome({ dtatu, startColor, endColor, title, subTitle, textColor, barStyle, bgStatus }) {
 
-    const { signOut, user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const navigation = useNavigation();
 
     return (
@@ -20,11 +20,11 @@ export default function HeaderHome({ dtatu, startColor, endColor, bgStatus, titl
             alignItems="center"
             justifyContent="center"
         >
-            <StatusBar barStyle={barStyle} backgroundColor={bgStatus} />
+            <StatusBar style={barStyle} backgroundColor={bgStatus} />
 
             <InfoLogged>
                 <InfoLogged.Left>
-                    <Icon name="ios-arrow-back-circle" size={20} color={textColor} onPress={() => navigation.goBack()} />
+                    <Icon name="ios-arrow-back-circle" size={22} color={textColor} onPress={() => navigation.goBack()} />
                 </InfoLogged.Left>
 
                 <InfoLogged.Middle>
@@ -34,7 +34,10 @@ export default function HeaderHome({ dtatu, startColor, endColor, bgStatus, titl
                 </InfoLogged.Middle>
 
                 <InfoLogged.Right>
-                <Icon name="ios-home-sharp" size={20} color={textColor} onPress={() => navigation.dispatch(StackActions.popToTop)} />
+                    <Icon name="ios-home-sharp" 
+                    size={22} 
+                    color={textColor} 
+                    onPress={() => navigation.dispatch(StackActions.popToTop)} />
                 </InfoLogged.Right>
             </InfoLogged>
 

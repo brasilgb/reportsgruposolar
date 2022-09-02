@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 
 export const BoxHome = styled.SafeAreaView`
 flex: 1;
-background-color: #F1F1F1;
 `;
 
 export const ScreenArea = styled.View`

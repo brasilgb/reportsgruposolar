@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import HeaderPortal from '../../components/Header/Portal';
-import { useNavigation, Redirect } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { LButtonMaster, BoxHome, ContainerPortal } from './style';
 import { AuthContext } from '../../contexts/auth';
 
@@ -21,11 +21,11 @@ export default function Home() {
             <HeaderPortal
                 startColor="#009DE0" // Meio
                 endColor="#00a8ea"
-                bgStatus="#00a8ea"
                 textColor="#FFF"
                 title="Grupo Solar"
                 subTitle="Relatórios Administrativos"
-                barStyle='light-content'
+                bgStatus="#00a8ea"
+                barStyle="light"
             />
             <ContainerPortal>
 

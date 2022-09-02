@@ -1,11 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import Icon from '@expo/vector-icons/Ionicons';
 import { AuthContext } from '../../../contexts/auth';
-import { BoxAtualiza, BoxTextAtualiza, InfoHeader, InfoLogged, TitleAtualiza, TopBarHome } from './style';
+import { InfoHeader, InfoLogged, TitleAtualiza, TopBarHome } from './style';
 
-export default function HeaderPortal({ dtatu, startColor, endColor, bgStatus, title, subTitle, textColor, barStyle }) {
+export default function HeaderPortal({ dtatu, startColor, endColor, title, subTitle, textColor, barStyle, bgStatus }) {
 
     const { signOut, user } = useContext(AuthContext);
     const navigation = useNavigation();
@@ -19,11 +19,11 @@ export default function HeaderPortal({ dtatu, startColor, endColor, bgStatus, ti
             alignItems="center"
             justifyContent="center"
         >
-            <StatusBar barStyle={barStyle} backgroundColor={bgStatus} />
+            <StatusBar style={barStyle} backgroundColor={bgStatus} />
 
             <InfoLogged>
                 <InfoLogged.Left>
-                    <Icon name="ios-person-circle" size={20} color={textColor} />
+                    <Icon name="ios-person-circle" size={22} color={textColor} />
                 </InfoLogged.Left>
 
                 <InfoLogged.Middle>
@@ -33,8 +33,9 @@ export default function HeaderPortal({ dtatu, startColor, endColor, bgStatus, ti
                 </InfoLogged.Middle>
 
                 <InfoLogged.Right>
-                    <Icon onPress={signOut} name="ios-exit-outline" size={20} color={textColor} />
+                    <Icon onPress={signOut} name="ios-exit-outline" size={22} color={textColor} />
                 </InfoLogged.Right>
+
             </InfoLogged>
 
             <InfoHeader>
@@ -48,7 +49,6 @@ export default function HeaderPortal({ dtatu, startColor, endColor, bgStatus, ti
                     {dtatu}
                 </TitleAtualiza>
             </InfoHeader>
-
 
         </TopBarHome>
     );

@@ -2,8 +2,9 @@ import React from 'react';
 import { useNavigation, StackActions } from '@react-navigation/native';
 import Icon from '@expo/vector-icons/Ionicons';
 import { BoxTextAtualiza, InfoHeader, InfoLogged, TitleAtualiza, TopBarHome } from './style';
+import { StatusBar } from 'expo-status-bar';
 
-export default function HeaderPage({ startColor, endColor, title, subTitle, dtatu, textColor }) {
+export default function HeaderPage({ startColor, endColor, title, subTitle, dtatu, textColor, barStyle, bgStatus }) {
 
     const navigation = useNavigation();
 
@@ -16,9 +17,10 @@ export default function HeaderPage({ startColor, endColor, title, subTitle, dtat
             alignItems="center"
             justifyContent="center"
         >
+            <StatusBar style={barStyle} backgroundColor={bgStatus} />
             <InfoLogged>
                 <InfoLogged.Left>
-                    <Icon name="ios-arrow-back-circle" size={20} color={textColor} onPress={() => navigation.goBack()} />
+                    <Icon name="ios-arrow-back-circle" size={22} color={textColor} onPress={() => navigation.goBack()} />
                 </InfoLogged.Left>
 
                 <InfoLogged.Middle>
@@ -28,7 +30,7 @@ export default function HeaderPage({ startColor, endColor, title, subTitle, dtat
                 </InfoLogged.Middle>
 
                 <InfoLogged.Right>
-                    <Icon name="ios-home-sharp" size={20} color={textColor} onPress={() => navigation.dispatch(StackActions.popToTop)} />
+                    <Icon name="ios-home-sharp" size={22} color={textColor} onPress={() => navigation.dispatch(StackActions.popToTop)} />
                 </InfoLogged.Right>
             </InfoLogged>
 
