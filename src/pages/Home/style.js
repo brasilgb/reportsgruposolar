@@ -1,19 +1,10 @@
 import styled from "styled-components";
 import React from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
-export const BoxHome = ({ children, startColor, endColor, alignItems, justifyContent }) => {
-    return (
-        <LinearGradient
-            colors={[startColor, endColor]}
-            style={{ flex: 1, alignItems: alignItems, justifyContent: justifyContent }}
-            start={{ x: 0.1, y: 1 }}
-            end={{ x: 0., y: 0.3 }}
-        >
-            {children}
-        </LinearGradient>
-    );
-};
 
+export const BoxHome = styled.SafeAreaView`
+flex: 1;
+background-color: ${props => props.bgcolor};
+`;
 
 export const ContainerPortal = styled.View`
 flex: 4;

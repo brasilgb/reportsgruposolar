@@ -13,10 +13,7 @@ export default function Home() {
     return (
 
         <BoxHome
-            startColor="#00a8ea"
-            endColor="#009DE0" // Meio
-            alignItems="center"
-            justifyContent="center"
+            bgcolor="#009DE0"
         >
             <HeaderPortal
                 startColor="#009DE0" // Meio
