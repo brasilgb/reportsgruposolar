@@ -69,7 +69,7 @@ export default function Naturovos() {
                                     </ContainerText>
                                 </AreaUm>
 
-                                <AreaUm height="120px" paddingTop="40px">
+                                <AreaUm height="160px" paddingTop="50px">
                                     <ContainerText>
                                         <ContainerText.Title color="#555" style={{ fontSize: 18 }}>Preço Médio</ContainerText.Title>
                                         <ContainerText.Value color="#555" style={{ fontSize: 40, fontWeight: 'bold' }}> <MoneyPTBR number={parseFloat(totais[0]?.PrecoMedio ? totais[0]?.PrecoMedio : 0)} /> </ContainerText.Value>
