@@ -4,17 +4,16 @@
  *
  * @format
  */
+ const { getDefaultConfig } = require('@expo/metro-config');
+ module.exports = (async () => {
+  const config = await getDefaultConfig(__dirname);
+  const { transformer, resolver } = config;
 
-module.exports = {
-  transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: true,
-      },
-    }),
-  },
-  resolver: {
-    sourceExts: ['js', 'jsx', 'ts', 'tsx'] 
-  }
-};
+  config.resolver = {
+    ...resolver,
+    assetExts: resolver.assetExts.filter((ext) => ext !== 'js' && ext !== 'ts'),
+    sourceExts: [...resolver.sourceExts, 'js', 'jsx', 'ts', 'tsx'],
+  };
+
+  return config;
+})();
