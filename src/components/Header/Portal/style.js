@@ -12,7 +12,7 @@ export const TopBarHome = ({ children, startColor, endColor, alignItems, justify
                 alignItems: alignItems,
                 ...Platform.select({
                     ios: {
-                        paddingTop: '14%'
+                        paddingTop: 10
                     },
                     android: {
                         paddingTop: 20
