@@ -7,8 +7,7 @@ import React, {
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import moment from 'moment';
-import isCobol from '../services/isCobol';
-import api from '../services/api';
+import login from '../services/login';
 
 export const AuthContext = createContext();
 
@@ -50,7 +49,7 @@ export default function AuthProvider({ children }) {
     const signIn = useCallback(async ({ code, password, name }) => {
         setLoadingAuth(true);
 
-        const response = await isCobol.post('(LOG_USU_VALIDATE_LOGIN)', {
+        const response = await login.post('(LOG_USU_VALIDATE_LOGIN)', {
             code,
             password,
         });
@@ -93,7 +92,7 @@ export default function AuthProvider({ children }) {
     }, []);
 
     const validateUser = useCallback(async ({ alternative }) => {
-        const response = await isCobol.post('(LOG_USU_VALIDATE_USER)', {
+        const response = await login.post('(LOG_USU_VALIDATE_USER)', {
             alternative,
         });
         if (response.status !== 200) {
@@ -119,7 +118,7 @@ export default function AuthProvider({ children }) {
 
     const validateAccessLevel = useCallback(async (userCode, programCode, module) => {
 
-        const response = await isCobol.post('(LOG_USU_VALIDATE_ACCESS)', {
+        const response = await login.post('(LOG_USU_VALIDATE_ACCESS)', {
             userCode,
             programCode,
             module,
@@ -140,6 +139,7 @@ export default function AuthProvider({ children }) {
         }
 
         return success;
+        
     },
         [],
     );

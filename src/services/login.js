@@ -5,11 +5,11 @@ let BASE_URL = '';
 let requestCustom;
 let data;
 
-const isCobol = axios.create({
+const login = axios.create({
   withCredentials: true
 });
 
-isCobol.interceptors.request.use(async (request) => {
+login.interceptors.request.use(async (request) => {
 // Teste
   // request.baseURL = `http://172.16.1.17:9090/servicesgruposolar/servlet/isCobol`;
   // BASE_URL = `http://172.16.1.34:8081/servicecomercial/servlet/isCobol`;
@@ -24,7 +24,7 @@ isCobol.interceptors.request.use(async (request) => {
   return request;
 });
 
-isCobol.interceptors.response.use(
+login.interceptors.response.use(
   response => response,
   async _error => {
     console.log('Abrindo sessão com o servidor novamente');
@@ -58,9 +58,9 @@ isCobol.interceptors.response.use(
     console.log('Refazendo a chamada original...');
     let originalResponse;
     if (requestCustom.method === 'POST' || requestCustom.method === 'post') {
-      originalResponse = await isCobol.post(`${requestCustom.url}`, data);
+      originalResponse = await login.post(`${requestCustom.url}`, data);
     } else {
-      originalResponse = await isCobol.get(`${requestCustom.url}`);
+      originalResponse = await login.get(`${requestCustom.url}`);
     }
     if (originalResponse.status !== 200) {
       session = {
@@ -74,4 +74,4 @@ isCobol.interceptors.response.use(
   },
 );
 
-export default isCobol;
+export default login;

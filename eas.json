@@ -14,9 +14,9 @@
   },
   "submit": {
     "production": {
-      "ios":{
+      "ios": {
         "appleId": "helpdesk@gruposolar.com.br",
-        "ascAppId": "1642958286",
+        "ascAppId": "1643706110",
         "appleTeamId": "JM6Q68NP87"
       }
     }

@@ -59,6 +59,7 @@ export default function Filial() {
                         <DataTable.Header style={{ backgroundColor: '#E5E5EA' }}>
                             <DataTable.Title style={styles.colgrandePrimary}>Filial.</DataTable.Title>
                             <DataTable.Title style={styles.colgrande}>Faturamento</DataTable.Title>
+                            <DataTable.Title style={styles.colpequena}>Proj.</DataTable.Title>
                             <DataTable.Title style={styles.colpequena}>Rep.Fat</DataTable.Title>
                             <DataTable.Title style={styles.colpequena}>Margem</DataTable.Title>
                             <DataTable.Title style={styles.colpequena}>Preço Médio</DataTable.Title>
@@ -68,6 +69,7 @@ export default function Filial() {
                                 <DataTable.Row key={index} style={{ backgroundColor: '#E5E5EA' }}>
                                     <DataTable.Cell style={styles.colgrandePrimary}>Total</DataTable.Cell>
                                     <DataTable.Cell style={styles.colgrande}><MoneyPTBR number={parseFloat(tot.Faturamento)} /></DataTable.Cell>
+                                    <DataTable.Cell style={styles.colpequena}>{((tot.Projecao) * 100).toFixed(2)}%</DataTable.Cell>
                                     <DataTable.Cell style={styles.colpequena}>{((1) * 100).toFixed(2)}%</DataTable.Cell>
                                     <DataTable.Cell style={styles.colpequena}>{((tot.Margem) * 100).toFixed(2)}%</DataTable.Cell>
                                     <DataTable.Cell style={styles.colpequena}><MoneyPTBR number={parseFloat(tot.PrecoMedio)} /></DataTable.Cell>
@@ -77,6 +79,7 @@ export default function Filial() {
                                 <DataTable.Row key={index} style={{ backgroundColor: index % 2 === 0 ? '#F3F4F6' : '#F9FAFB' }}>
                                     <DataTable.Cell style={styles.colgrandePrimary}>{fil.Filial}</DataTable.Cell>
                                     <DataTable.Cell style={styles.colgrande}>{<MoneyPTBR number={parseFloat(fil.Faturamento)} />}</DataTable.Cell>
+                                    <DataTable.Cell style={styles.colpequena}>{((fil.Projecao) * 100).toFixed(2)}%</DataTable.Cell>
                                     <DataTable.Cell style={styles.colpequena}>{((fil.RepFaturamento) * 100).toFixed(2)}%</DataTable.Cell>
                                     <DataTable.Cell style={styles.colpequena}>{((fil.Margem) * 100).toFixed(2)}%</DataTable.Cell>
                                     <DataTable.Cell style={styles.colpequena}>{<MoneyPTBR number={parseFloat(fil.PrecoMedio)} />}</DataTable.Cell>

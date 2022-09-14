@@ -59,7 +59,6 @@ export default function Grupo() {
                             <DataTable.Title style={styles.colgrandePrimary}>Assoc.</DataTable.Title>
                             <DataTable.Title style={styles.colgrande}>Faturamento</DataTable.Title>
                             <DataTable.Title style={styles.colpequena}>Rep.Fat</DataTable.Title>
-                            <DataTable.Title style={styles.colpequena}>Proj.</DataTable.Title>
                             <DataTable.Title style={styles.colpequena}>Margem</DataTable.Title>
                             <DataTable.Title style={styles.colpequena}>Preço Médio</DataTable.Title>
                         </DataTable.Header>
@@ -70,7 +69,6 @@ export default function Grupo() {
                                     <DataTable.Cell style={styles.colgrandePrimary}>Total</DataTable.Cell>
                                     <DataTable.Cell style={styles.colgrande}><MoneyPTBR number={parseFloat(tot.Faturamento)} /></DataTable.Cell>
                                     <DataTable.Cell style={styles.colpequena}>{((1) * 100).toFixed(2)}%</DataTable.Cell>
-                                    <DataTable.Cell style={styles.colpequena}>{((tot.Projecao) * 100).toFixed(2)}%</DataTable.Cell>
                                     <DataTable.Cell style={styles.colpequena}>{((tot.Margem) * 100).toFixed(2)}%</DataTable.Cell>
                                     <DataTable.Cell style={styles.colpequena}><MoneyPTBR number={parseFloat(tot.PrecoMedio)} /></DataTable.Cell>
                                 </DataTable.Row>

@@ -14,7 +14,7 @@ import api from '../../../../services/api';
 export default function SPerformanceMes() {
 
   const { dtFormatada, dataFiltro } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [serTotais, setSerTotais] = useState([]);
 
   // Extração de dados resumos totais
@@ -41,7 +41,7 @@ export default function SPerformanceMes() {
         :
         <Fragment>
           <DataTable.Row style={styles.titleTable}>
-            <DataTable.Cell style={styles.titleText}>
+            <DataTable.Cell>
               <Text style={styles.titleText}>Performance Mês GE, PP, AP e EP</Text>
             </DataTable.Cell>
           </DataTable.Row>

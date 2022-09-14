@@ -159,6 +159,15 @@ export default function Naturovos() {
                                     onPress="NResumoFaturamento"
                                 />
 
+                                <ButtomSetores
+                                    startColor="#fcbc32"
+                                    endColor="#F5AB00"
+                                    textColor="#333"
+                                    icon="ios-cash-outline"
+                                    title="Fluxo"
+                                    onPress="NFluxo"
+                                />
+
                             </BoxButtom>
                         </ButtonArea>
                     </ScreenArea>
