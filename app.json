@@ -6,7 +6,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -24,18 +24,15 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.solar.relatoriosdogruposolar",
-      "buildNumber": "1"
+      "buildNumber": "4"
     },
     "android": {
       "package": "com.solar.relatoriosdogruposolar",
-      "versionCode": 1,
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#00A8EA"
       }
-    },
-    "androidStatusBar": {
-      "translucent": true
     },
     "extra": {
       "eas": {

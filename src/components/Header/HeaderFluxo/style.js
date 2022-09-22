@@ -17,7 +17,7 @@ export const TopBarHome = ({ children, startColor, endColor, alignItems, justify
                         paddingTop: 10
                     },
                     android: {
-                        paddingTop: 20
+                        paddingTop: 30
                     }
                 })
             }}
@@ -29,16 +29,6 @@ export const TopBarHome = ({ children, startColor, endColor, alignItems, justify
     );
 };
 
-// export const TopBarHome = styled.View`
-// flex: 1;
-// `;
-
-// export const BoxHeaderHome = styled.View`
-// background-color: ${props => props.bgColor ? props.bgColor : "#FFF"};
-// border-bottom-start-radius: 20px;
-// border-bottom-end-radius: 20px;
-// padding-bottom: ${ props => props.paddingBottom ? props.paddingBottom : 0 };
-// `;
 export const InfoLogged = styled.View`
 flex: 1;
 flex-direction: row;
@@ -88,29 +78,3 @@ text-align: center;
 text-transform: uppercase;
 padding: 0px 0px 2px; 
 `;
-
-export const BoxAtualiza = styled.View`
-flex-direction: row;
-align-self: center;
-align-items: center;
-background-color: ${props => props.bgColor ? props.bgColor : "#FFF"};
-padding: 5px 20px 5px;
-margin: 10px;
-border-radius: 15px;
-border-width: 2px;
-border-color: #FFF;
-`;
-
-export const BoxTextAtualiza = styled.View`
-flex-grow: 2;
-`;
-
-export const TitleAtualiza = styled.Text`
-font-size: 16px;
-font-family: "Roboto_500Medium";
-color: ${props => props.color ? props.color : "#FFF"};
-text-align: center;
-padding: 2px 0px 2px;
-text-shadow: 1px 1px 4px #ccc;
-`;
-

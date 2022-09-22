@@ -12,7 +12,7 @@ import { AreaUm, BoxHome, ButtonArea, ContainerText, GraphArea, ScreenArea } fro
 
 export default function Naturovos() {
 
-    const { dtFormatada, dataFiltro } = useContext(AuthContext);
+    const { user, dtFormatada, dataFiltro } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [totais, setTotais] = useState([]);
 
@@ -158,16 +158,16 @@ export default function Naturovos() {
                                     title="ADM Resumo"
                                     onPress="NResumoFaturamento"
                                 />
-
-                                <ButtomSetores
-                                    startColor="#fcbc32"
-                                    endColor="#F5AB00"
-                                    textColor="#333"
-                                    icon="ios-cash-outline"
-                                    title="Fluxo"
-                                    onPress="NFluxo"
-                                />
-
+                                {user.levelFluxo &&
+                                    <ButtomSetores
+                                        startColor="#fcbc32"
+                                        endColor="#F5AB00"
+                                        textColor="#333"
+                                        icon="ios-cash-outline"
+                                        title="Fluxo"
+                                        onPress="NFluxo"
+                                    />
+                                }
                             </BoxButtom>
                         </ButtonArea>
                     </ScreenArea>

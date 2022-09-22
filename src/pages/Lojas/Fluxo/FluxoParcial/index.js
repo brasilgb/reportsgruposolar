@@ -1,39 +1,15 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import fluxo from '../../../../services/fluxo';
 import Icon from '@expo/vector-icons/Ionicons';
 import Loading from '../../../../components/Loading';
 import MoneyPTBR from '../../../../components/MoneyPTBR';
 
-export default function FluxoParcial() {
-
-    const [fluxoData, setFluxoData] = useState([]);
+export default function FluxoParcial( {fluxoparcial, loading }) {
     const [showFluxoTwo, setShowFluxoTwo] = useState(false);
     const [showFluxoThree, setShowFluxoThree] = useState(false);
     const [codigoFluxoTwo, setCodigoFluxoTwo] = useState();
     const [codigoFluxoThree, setCodigoFluxoThree] = useState();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function getFluxoCaixa() {
-
-            await fluxo.post('http://comercial.gruposolar.com.br:8081/servicesgruposolar/servlet/isCobol/(FLUXO_DE_CAIXA)', {
-                "fluxoTipreg": 1,
-                "fluxoDepto": 1,
-                "fluxoDatini": 20220912,
-                "fluxoDatfin": 20220912
-            })
-                .then((response) => {
-                    setLoading(false);
-                    setFluxoData(response.data.bi054.bidata);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }
-        getFluxoCaixa();
-    });
 
     const toggleFluxoTwo = ((e, codigo) => {
         e.preventDefault();
@@ -50,22 +26,25 @@ export default function FluxoParcial() {
     return (
 
         <Fragment>
+
             <View style={styles.container}>
                 <ScrollView horizontal={false} showsHorizontalScrollIndicator={false}>
-                    {loading
-                        ?
-                        <Loading color="#0A3B7E" />
-                        :
-                        <View style={styles.boxAll}>
-                            <View style={styles.boxTitle}>
-                                <Text style={styles.boxTitleText}>Fluxo de caixa Lojas Solar</Text>
-                            </View>
-                            {fluxoData.filter((n1) => (n1.nivel === 1))
+
+                    <View style={styles.boxAll}>
+                        <View style={styles.boxTitle}>
+                            <Text style={styles.boxTitleText}>Fluxo de caixa Lojas Solar</Text>
+                        </View>
+
+                        {loading
+                            ?
+                            <Loading color="#0A3B7E" />
+                            :
+                            fluxoparcial.filter((n1) => (n1.nivel === 1))
                                 .sort((a, b) => a.ordem > b.ordem ? 1 : -1)
                                 .map((itemOne, indexOne) => (
                                     <View key={indexOne}>
                                         <View style={styles.rowOne}>
-                                            {fluxoData.filter((n2a) => (n2a.nivel === 2 && itemOne.codigo === n2a.agrupador)).length
+                                            {fluxoparcial.filter((n2a) => (n2a.nivel === 2 && itemOne.codigo === n2a.agrupador)).length
                                                 ? <Icon onPress={(e) => toggleFluxoTwo(e, itemOne.codigo)} style={styles.icon} name={codigoFluxoTwo == itemOne.codigo && showFluxoTwo ? 'chevron-up-sharp' : 'chevron-down-sharp'} size={18} />
                                                 : <Icon style={styles.iconEmpty} name="remove" size={18} color="#ccc" />
                                             }
@@ -77,12 +56,12 @@ export default function FluxoParcial() {
                                         </View>
                                         {codigoFluxoTwo == itemOne.codigo && showFluxoTwo &&
                                             <View>
-                                                {fluxoData.filter((n2) => (n2.nivel === 2 && itemOne.codigo === n2.agrupador && n2.valor != 0))
+                                                {fluxoparcial.filter((n2) => (n2.nivel === 2 && itemOne.codigo === n2.agrupador && n2.valor != 0))
                                                     .sort((a, b) => a.ordem > b.ordem ? 1 : -1)
                                                     .map((itemTwo, indexTwo) => (
                                                         <View key={indexTwo}>
                                                             <View style={styles.rowTwo}>
-                                                                {fluxoData.filter((n3a) => (n3a.nivel === 3 && itemTwo.codigo === n3a.agrupador)).length
+                                                                {fluxoparcial.filter((n3a) => (n3a.nivel === 3 && itemTwo.codigo === n3a.agrupador)).length
                                                                     ? <Icon onPress={(e) => toggleFluxoThree(e, itemTwo.codigo)} style={styles.icon} name={codigoFluxoThree == itemTwo.codigo && showFluxoThree ? 'chevron-up-sharp' : 'chevron-down-sharp'} size={18} />
                                                                     : <Icon style={styles.iconEmpty} name="remove" size={18} color="#ddd" />
                                                                 }
@@ -94,7 +73,7 @@ export default function FluxoParcial() {
                                                             </View>
                                                             {codigoFluxoThree == itemTwo.codigo && showFluxoThree &&
                                                                 <View>
-                                                                    {fluxoData.filter((n3) => (n3.nivel === 3 && itemTwo.codigo === n3.agrupador && n3.valor != 0))
+                                                                    {fluxoparcial.filter((n3) => (n3.nivel === 3 && itemTwo.codigo === n3.agrupador && n3.valor != 0))
                                                                         .sort((a, b) => a.ordem > b.ordem ? 1 : -1)
                                                                         .map((itemThree, indexThree) => (
                                                                             <View style={styles.rowThree} key={indexThree}>
@@ -113,9 +92,9 @@ export default function FluxoParcial() {
                                             </View>
                                         }
                                     </View>
-                                ))}
-                        </View>
-                    }
+                                ))
+                        }
+                    </View>
                 </ScrollView>
             </View>
         </Fragment>
@@ -201,7 +180,7 @@ const styles = StyleSheet.create({
     title: {
         flex: 3,
         fontSize: 14,
-        // backgroundColor: "#29ABE2",
+
         paddingVertical: 10,
     },
     value: {
@@ -210,7 +189,7 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         borderLeftWidth: 1,
         borderLeftColor: '#dcdcdc',
-        width: 120,
+        width: 140,
         paddingVertical: 10,
     }
 });

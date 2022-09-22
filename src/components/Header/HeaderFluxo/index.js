@@ -1,5 +1,5 @@
 import { StackActions, useNavigation } from '@react-navigation/native';
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import Icon from '@expo/vector-icons/Ionicons';
 import { AuthContext } from '../../../contexts/auth';
@@ -12,53 +12,49 @@ export default function HeaderFluxo({ dtatu, startColor, endColor, title, subTit
     const navigation = useNavigation();
 
     return (
-
-        <TopBarHome
-            startColor={startColor}
-            endColor={endColor}
-            textColor={textColor}
-            alignItems="center"
-            justifyContent="center"
-        >
+        <Fragment>
             <StatusBar style={barStyle} backgroundColor={bgStatus} />
+            <TopBarHome
+                startColor={startColor}
+                endColor={endColor}
+                textColor={textColor}
+                alignItems="center"
+                justifyContent="center"
+            >
 
-            <InfoLogged>
-                <InfoLogged.Left>
-                    <Icon name="ios-arrow-back-circle" size={22} color={textColor} onPress={() => navigation.goBack()} />
-                </InfoLogged.Left>
+                <InfoLogged>
+                    <InfoLogged.Left>
+                        <Icon name="ios-arrow-back-circle" size={22} color={textColor} onPress={() => navigation.goBack()} />
+                    </InfoLogged.Left>
 
-                <InfoLogged.Middle>
-                    <InfoLogged.Title color={textColor}>
-                        {user.Name}
-                    </InfoLogged.Title>
-                </InfoLogged.Middle>
+                    <InfoLogged.Middle>
+                        <InfoLogged.Title color={textColor}>
+                            {user.Name}
+                        </InfoLogged.Title>
+                    </InfoLogged.Middle>
 
-                <InfoLogged.Right>
-                    <Icon name="ios-home-sharp" 
-                    size={22} 
-                    color={textColor} 
-                    onPress={() => navigation.dispatch(StackActions.popToTop)} />
-                </InfoLogged.Right>
-            </InfoLogged>
+                    <InfoLogged.Right>
+                        <Icon name="ios-home-sharp"
+                            size={22}
+                            color={textColor}
+                            onPress={() => navigation.dispatch(StackActions.popToTop)} />
+                    </InfoLogged.Right>
+                </InfoLogged>
 
-            <InfoHeader>
-                <InfoHeader.Title color={textColor}>
-                    {title}
-                </InfoHeader.Title>
-                <InfoHeader.SubTitle color={textColor}>
-                    {subTitle}
-                </InfoHeader.SubTitle>
-            </InfoHeader>
-
-            <BoxAtualiza bgcolor="#FFF">
-                <BoxTextAtualiza>
-                    <TitleAtualiza color="#555">
+                <InfoHeader>
+                    <InfoHeader.Title color={textColor}>
+                        {title}
+                    </InfoHeader.Title>
+                    <InfoHeader.SubTitle color={textColor}>
+                        {subTitle}
+                    </InfoHeader.SubTitle>
+                    <InfoHeader.SubTitle color={textColor}>
                         {dtatu}
-                    </TitleAtualiza>
-                </BoxTextAtualiza>
-                <CalendarRange color={endColor} />
-            </BoxAtualiza>
+                    </InfoHeader.SubTitle>
 
-        </TopBarHome>
+                </InfoHeader>
+                <CalendarRange color={textColor} />
+            </TopBarHome>
+        </Fragment>
     );
 }

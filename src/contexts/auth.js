@@ -23,6 +23,9 @@ export default function AuthProvider({ children }) {
     const [grupoLevelAccess, setGrupoLevelAccess] = useState(false);
 
     const [dataFiltro, setDataFiltro] = useState(new Date());
+    const [dataFluxo1, setDataFluxo1] = useState(new Date());
+    const [dataFluxo2, setDataFluxo2] = useState(new Date());
+    const [showFluxo, setShowFluxo] = useState(1);
 
     const dtFormatada = (date) => {
         return moment(date).format('YYYY-MM-DD');
@@ -31,7 +34,6 @@ export default function AuthProvider({ children }) {
     function calendarDate(dataf) {
         console.log(dataf);
     }
-
 
     // Armazena usuário no storage
     useEffect(() => {
@@ -61,17 +63,18 @@ export default function AuthProvider({ children }) {
             );
         }
 
-        const { success } = response.data.login;
+        const { success, message, detailMessage } = response.data.login;
         if (!success) {
             setUser(undefined);
             setLoadingAuth(false);
-            // throw new Error(`${message}\n\nDetalhes:\n${detailMessage}`);
-            return;
+            Alert.alert('Erro de Acesso ',message + '-', detailMessage);
+            throw new Error(`${message}\n\nDetalhes:\n${detailMessage}`);
         }
 
         const lojaAccess = await validateAccessLevel(code, 2866, 9);
         const superAccess = await validateAccessLevel(code, 2867, 9);
         const naturAccess = await validateAccessLevel(code, 2868, 9);
+        const fluxoAccess = await validateAccessLevel(code, 2874, 9);
 
         let la = lojaAccess ? 1 : 0;
         let sa = superAccess ? 1 : 0;
@@ -83,7 +86,9 @@ export default function AuthProvider({ children }) {
             levelLoja: lojaAccess ? true : false,
             levelSuper: superAccess ? true : false,
             levelNatur: naturAccess ? true : false,
+            levelFluxo: fluxoAccess ? true : false,
             lengthGrupo: la + sa + sn
+
         }
         storageUser(udata);
         setUser(udata);
@@ -107,7 +112,7 @@ export default function AuthProvider({ children }) {
             setUser(undefined)
 
             Alert.alert('Erro de Acesso', message);
-            // throw new Error(`${message}\n\nDetalhes:\n${detailMessage}`);
+            throw new Error(`${message}\n\nDetalhes:\n${detailMessage}`);
         }
 
         return {
@@ -133,17 +138,9 @@ export default function AuthProvider({ children }) {
 
         const { success } = response.data.access;
 
-        if (!success) {
-
-            // throw new Error(`${message}\n\nDetalhes:\n${detailMessage}`);
-        }
-
         return success;
-        
-    },
-        [],
-    );
 
+    }, []);
 
     async function storageUser(data) {
         await AsyncStorage.setItem('Auth_user', JSON.stringify(data));
@@ -179,7 +176,13 @@ export default function AuthProvider({ children }) {
             calendarDate,
             dtFormatada,
             setDataFiltro,
-            dataFiltro
+            dataFiltro,
+            setDataFluxo1,
+            setDataFluxo2,
+            dataFluxo1,
+            dataFluxo2,
+            showFluxo,
+            setShowFluxo
         }}>
             {children}
         </AuthContext.Provider>

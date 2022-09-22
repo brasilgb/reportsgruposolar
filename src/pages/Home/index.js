@@ -23,6 +23,7 @@ export default function Home() {
                 subTitle="Relatórios Administrativos"
                 bgStatus="#009DE0"
                 barStyle="light"
+                appversao='v1.0.2'
             />
             <ContainerPortal>
 

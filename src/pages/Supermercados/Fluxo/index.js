@@ -1,61 +1,112 @@
 import React, { useContext, useEffect, useState } from 'react';
 import moment from 'moment';
-import HeaderPage from '../../../components/Header/Page';
 import { BoxHome, TabContainer } from '../../style';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-const ResumoTab = createMaterialTopTabNavigator();
 import { AuthContext } from '../../../contexts/auth';
-import api from '../../../services/api';
 import FluxoParcial from './FluxoParcial';
 import FluxoTotal from './FluxoTotal';
+import { ContainerButtomFluxo, LButtomFluxo } from './style';
+import { View } from 'react-native';
+import HeaderPage from '../../../components/Header/Page';
+import CalendarRange from '../../../components/CalendarRange';
+import fluxo from '../../../services/fluxo';
 
-export default function SFluxo() {
+export default function NFluxo() {
 
-    const { dtFormatada, dataFiltro } = useContext(AuthContext);
-    const [totais, setTotais] = useState(0);
-
+    const { user, showFluxo, setShowFluxo, dataFluxo1, dataFluxo2 } = useContext(AuthContext);
     // Extração de dados resumos totais
+    const [fluxoDataParcialSuper, setFluxoDataParcialSuper] = useState([]);
+    const [fluxoDataTotalSuper, setFluxoDataTotalSuper] = useState([]);
+    const [loading, setLoading] = useState(false);
+    // Extração de dados
+
     useEffect(() => {
-        async function getTotais() {
-            await api.get(`totais/${dtFormatada(dataFiltro)}`)
-                .then(totais => {
-                    const tot = totais.data.filter((dep) => (dep.Departamento === 1));
-                    setTotais(tot);
+        async function getFluxoCaixaSuper() {
+            setLoading(true);
+            await fluxo.post('http://comercial.gruposolar.com.br:8081/servicesgruposolar/servlet/isCobol/(FLUXO_DE_CAIXA)', {
+                "fluxoTipreg": 1,
+                "fluxoDepto": 2,
+                "fluxoDatini": moment(dataFluxo1).format('YYYYMMDD'),
+                "fluxoDatfin": moment(dataFluxo2).format('YYYYMMDD')
+            })
+                .then((response) => {
+                    setLoading(false);
+                    setFluxoDataParcialSuper(response.data.bi054.bidata);
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log(err);
-                })
+                });
         }
-        getTotais();
-    }, [dataFiltro]);
+        getFluxoCaixaSuper();
+    }, []);
+
+    useEffect(() => {
+        async function getFluxoCaixaTotalSuper() {
+            setLoading(true);
+            await fluxo.post('http://comercial.gruposolar.com.br:8081/servicesgruposolar/servlet/isCobol/(FLUXO_DE_CAIXA)', {
+                "fluxoTipreg": 1,
+                "fluxoDepto": 99,
+                "fluxoDatini": moment(dataFluxo1).format('YYYYMMDD'),
+                "fluxoDatfin": moment(dataFluxo2).format('YYYYMMDD')
+            })
+                .then((response) => {
+                    setLoading(false);
+                    setFluxoDataTotalSuper(response.data.bi054.bidata);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+        getFluxoCaixaTotalSuper();
+    }, []);
 
     return (
         <BoxHome>
 
             <HeaderPage
-                startColor="#014D9B"
-                endColor="#0A3B7E"
+                startColor="#FF710F"
+                endColor="#f26000"
                 textColor="#FFF"
-                title="Lojas Solar"
-                subTitle="Resumo de Faturamento"
-                dtatu={moment(totais[0]?.Atualizacao).format('DD/MM/YYYY HH:mm:ss')}
-                bgStatus="#0A3B7E"
-                barStyle='light'
+                title="Supermercados"
+                subTitle="Fluxo de Caixa"
+                dtatu={fluxoDataParcialSuper.filter((d) => (d.nivel === 1)).map((a) => (a.atualizacao)).filter((x, i, a) => a.indexOf(x) == i)}
+                bgStatus="#f26000"
+                barStyle="light"
             />
 
             <TabContainer>
-                <ResumoTab.Navigator
-                    screenOptions={{
-                        tabBarLabelStyle: { fontSize: 14 },
-                        // tabBarItemStyle: { width: 125 },
-                        tabBarStyle: { backgroundColor: '#fdfdfd' },
-                        tabBarIndicatorStyle: { backgroundColor: '#0A3B7E' },
-                        tabBarPressColor: '#014D9B'
-                    }}
-                >
-                    <ResumoTab.Screen name="Fluxo" component={FluxoParcial} />
-                    <ResumoTab.Screen name="Fluxo Geral" component={FluxoTotal} />
-                </ResumoTab.Navigator>
+                <CalendarRange color={"#555"} />
+                <ContainerButtomFluxo bgcolor="#fff">
+
+                    <LButtomFluxo
+                        onPress={() => setShowFluxo(1)}
+                        activeOpacity={showFluxo === 1 ? 1 : 0}
+                        bgcolor={showFluxo === 1 ? '#f26000' : '#ddd'}
+                    >
+                        <LButtomFluxo.TextButtom color={showFluxo === 1 ? '#fff' : '#333'}>
+                            Fluxo Super
+                        </LButtomFluxo.TextButtom>
+                    </LButtomFluxo>
+                    {user.lengthGrupo > 2 &&
+                        <LButtomFluxo
+                            onPress={() => setShowFluxo(2)}
+                            activeOpacity={showFluxo === 2 ? 1 : 0}
+                            bgcolor={showFluxo === 2 ? '#f26000' : '#ddd'}
+                        >
+                            <LButtomFluxo.TextButtom color={showFluxo === 2 ? '#fff' : '#333'}>
+                                Fluxo Grupo
+                            </LButtomFluxo.TextButtom>
+                        </LButtomFluxo>
+                    }
+                </ContainerButtomFluxo>
+                <View style={{ flex: 1, backgroundColor: '#000' }}>
+                    {showFluxo === 1 &&
+                        <FluxoParcial fluxoparcial={fluxoDataParcialSuper} loading={loading} />
+                    }
+                    {showFluxo === 2 &&
+                        <FluxoTotal fluxototal={fluxoDataTotalSuper} loading={loading} />
+                    }
+                </View>
+
             </TabContainer>
 
         </BoxHome>

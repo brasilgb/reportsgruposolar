@@ -49,7 +49,7 @@ export default function ResumoSuper() {
             // tabBarItemStyle: { width: 125 },
             tabBarStyle: { backgroundColor: '#f1f1f1' },
             tabBarIndicatorStyle: {backgroundColor: '#f26000'},
-            tabBarPressColor: '#FF710F'
+            tabBarPressColor: '#FF710F' 
           }}
         >
           <ResumoTab.Screen name="Filial" component={Filiais} />

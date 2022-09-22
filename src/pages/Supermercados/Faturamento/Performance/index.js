@@ -280,6 +280,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 6
   },
   titleText: {
-    color: "#FFF"
+    color: "#FFF" 
   }
 });

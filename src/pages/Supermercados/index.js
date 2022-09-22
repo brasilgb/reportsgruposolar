@@ -8,11 +8,11 @@ import MoneyPTBR from '../../components/MoneyPTBR';
 import CircularProgress from 'react-native-circular-progress-indicator';
 import api from '../../services/api';
 import Loading from '../../components/Loading';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 
 export default function Naturovos() {
 
-  const { dtFormatada, dataFiltro } = useContext(AuthContext);
+  const { user, dtFormatada, dataFiltro } = useContext(AuthContext);
   const [loading, setLoading] = useState(false)
   const [totais, setTotais] = useState([]);
 
@@ -152,16 +152,16 @@ export default function Naturovos() {
                   title="Compras"
                   onPress="SCompras"
                 />
-
-                <ButtomSetores
-                  startColor="#FF710F"
-                  endColor="#f26000"
-                  textColor="#FFF"
-                  icon="ios-cash-outline"
-                  title="Fluxo"
-                  onPress="SFluxo"
-                />
-
+                {user.levelFluxo &&
+                  <ButtomSetores
+                    startColor="#FF710F"
+                    endColor="#f26000"
+                    textColor="#FFF"
+                    icon="ios-cash-outline"
+                    title="Fluxo"
+                    onPress="SFluxo"
+                  />
+                }
               </BoxButtom>
 
             </ButtonArea>

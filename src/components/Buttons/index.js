@@ -32,7 +32,7 @@ const ButtomSetores = ({ bgColor, icon, title, onPress, startColor, endColor, te
 
   };
   return (
-
+ 
     <NavButton
       bgColor={bgColor}
       onPress={() => toggleLoading(onPress)}

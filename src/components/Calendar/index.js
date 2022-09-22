@@ -11,12 +11,12 @@ export default function Calendar({ color }) {
   const [show, setShow] = useState(false);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setShow(false);
-    setDate(currentDate);
-    setDataFiltro(currentDate)
-  };
+  // const onChange = (event, selectedDate) => {
+  //   const currentDate = selectedDate;
+  //   setShow(false);
+  //   setDate(currentDate);
+  //   setDataFiltro(currentDate)
+  // };
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -43,7 +43,7 @@ export default function Calendar({ color }) {
           mode="date"
           onConfirm={handleConfirm}
           onCancel={hideDatePicker}
-          onChange={onChange}
+          // onChange={onChange}
           locale="pt-br"
           
         />

@@ -5,7 +5,6 @@ flex-direction: row;
 align-items: center; 
 justify-content: center;
 background-color: ${props => props.bgcolor};
-
 `;
 
 export const NavButton = styled.TouchableOpacity`

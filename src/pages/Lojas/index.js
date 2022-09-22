@@ -12,7 +12,7 @@ import { View } from 'react-native';
 
 export default function Lojas() {
 
-  const { dtFormatada, dataFiltro } = useContext(AuthContext);
+  const { user, dtFormatada, dataFiltro } = useContext(AuthContext);
   const [loading, setLoading] = useState(false)
   const [totais, setTotais] = useState([]);
 
@@ -176,15 +176,17 @@ export default function Lojas() {
                   title="Compras"
                   onPress="LCompras"
                 />
+                {user.levelFluxo &&
+                  <ButtomSetores
+                    startColor="#014D9B"
+                    endColor="#0A3B7E"
+                    textColor="#FFF"
+                    icon="ios-cash-outline"
+                    title="Fluxo"
+                    onPress="LFluxo"
+                  />
+                }
 
-                <ButtomSetores
-                  startColor="#014D9B"
-                  endColor="#0A3B7E"
-                  textColor="#FFF"
-                  icon="ios-cash-outline"
-                  title="Fluxo"
-                  onPress="LFluxo"
-                />
 
               </BoxButtom>
             </ButtonArea>

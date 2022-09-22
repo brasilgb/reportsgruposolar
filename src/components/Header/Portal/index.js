@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import Icon from '@expo/vector-icons/Ionicons';
 import { AuthContext } from '../../../contexts/auth';
-import { InfoHeader, InfoLogged, TitleAtualiza, TopBarHome } from './style';
+import { AppVersao, InfoHeader, InfoLogged, TitleAtualiza, TopBarHome } from './style';
 
-export default function HeaderPortal({ dtatu, startColor, endColor, title, subTitle, textColor, barStyle, bgStatus }) {
+export default function HeaderPortal({ dtatu, startColor, endColor, title, subTitle, textColor, barStyle, bgStatus, appversao }) {
 
     const { signOut, user } = useContext(AuthContext);
     const navigation = useNavigation();
@@ -45,9 +45,9 @@ export default function HeaderPortal({ dtatu, startColor, endColor, title, subTi
                 <InfoHeader.SubTitle color={textColor}>
                     {subTitle}
                 </InfoHeader.SubTitle>
-                <TitleAtualiza color="#555">
-                    {dtatu}
-                </TitleAtualiza>
+                <AppVersao>
+                    {appversao}
+                </AppVersao>
             </InfoHeader>
 
         </TopBarHome>

@@ -17,7 +17,7 @@ export const TopBarHome = ({ children, startColor, endColor, alignItems, justify
                         paddingTop: 10
                     },
                     android: {
-                        paddingTop: 20
+                        paddingTop: 30
                     }
                 })
             }}

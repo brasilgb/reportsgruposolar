@@ -15,7 +15,7 @@ export const TopBarHome = ({ children, startColor, endColor, alignItems, justify
                         paddingTop: 10
                     },
                     android: {
-                        paddingTop: 20
+                        paddingTop: 30
                     }
                 })
             }}
@@ -115,5 +115,13 @@ color: ${props => props.color ? props.color : "#FFF"};
 text-align: center;
 padding: 2px 0px 2px;
 text-shadow: 1px 1px 4px #ccc;
+`;
+
+export const AppVersao = styled.Text`
+font-size: 12px;
+font-family: "Roboto_500Medium";
+color: ${props => props.color ? props.color : "#FFF"};
+text-align: center;
+padding: 0px;
 `;
 
